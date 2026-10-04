@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -38,6 +39,7 @@ body {
 
 .search-input {
   flex: 1;
+  min-width: 0;
   padding: 0.5rem 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -57,13 +59,18 @@ body {
   background: white;
 }
 
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
 .task-table {
   width: 100%;
   border-collapse: collapse;
   background: white;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .task-table th {
@@ -96,6 +103,7 @@ body {
   color: #888;
   font-size: 0.75rem;
   margin-top: 0.2rem;
+  overflow-wrap: anywhere;
 }
 
 .status-badge {
@@ -122,6 +130,11 @@ body {
   color: #2e7d32;
 }
 
+.status-badge.unknown {
+  background: #eee;
+  color: #555;
+}
+
 .state-message {
   text-align: center;
   padding: 3rem;
@@ -134,6 +147,7 @@ body {
 .state-message.error {
   color: #c62828;
   background: #ffebee;
+  overflow-wrap: anywhere;
 }
 
 .pagination {
@@ -161,4 +175,38 @@ body {
 .pagination button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 1rem 0.5rem;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+  }
+
+  .search-input,
+  .status-filter {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .task-table {
+    min-width: 600px;
+  }
+
+  .task-table th,
+  .task-table td {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .state-message {
+    padding: 2rem 1rem;
+  }
 }
